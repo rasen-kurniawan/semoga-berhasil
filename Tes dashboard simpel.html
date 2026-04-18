@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serene Leaf | Premium Tea Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --tea-green: #2d4739;
+            --tea-cream: #f9f7f2;
+            --tea-sage: #8da399;
+            --tea-brown: #5c4033;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--tea-cream);
+            color: var(--tea-green);
+            scroll-behavior: smooth;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-card .overlay {
+            background: rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .btn-view {
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .btn-view {
+            transform: translateY(0);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--tea-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--tea-green);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-[#f9f7f2]/90 backdrop-blur-md z-50 border-b border-[#e5e1da]">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="showSection('home')">
+                <img src="Logo.png" alt="Logo" class="h-16 w-auto">    
+            </div>
+            <div class="hidden md:flex gap-8">
+                <button onclick="showSection('home')" class="nav-link active text-sm uppercase tracking-widest text-[#8da399]" id="nav-home">Home</button>
+                <button onclick="showSection('about')" class="nav-link text-sm uppercase tracking-widest text-[#8da399]" id="nav-about">About</button>
+                <button onclick="showSection('products')" class="nav-link text-sm uppercase tracking-widest text-[#8da399]" id="nav-products">All Products</button>
+                <button onclick="showSection('contacts')" class="nav-link text-sm uppercase tracking-widest text-[#8da399]" id="nav-contacts">Contacts</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="min-h-[50vh] flex flex-col items-center justify-center text-center px-6 pt-5 py-20">
+                <img src="Logo.png" alt="Logo" class="w-48 h-48 object-contain mb-4" onerror="this.src='https://via.placeholder.com/200/f9f7f2/2d4739?text=SERENE+LEAF'">
+                <h1 class="text-4xl md:text-6xl font-serif text-[#2d4739] mb-4 max-w-3xl font-bold">
+                    The Art of Tranquility in Every Leaf.
+                </h1>
+                <p class="text-[#5c4033] text-xl max-w-2xl italic opacity-80 leading-relaxed">
+                    "Experience the profound stillness of the hills. Our tea is harvested with intention, bringing the calming essence of nature directly to your sanctuary."
+                </p>
+                <button onclick="showSection('products')" class="mt-6 bg-[#2d4739] text-[#f9f7f2] px-10 py-4 rounded-full hover:bg-[#1a2b22] transition-all transform hover:scale-105 shadow-lg">
+                    Discover Our Blends
+                </button>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-6 py-8 border-t border-[#e5e1da]">
+                <h2 class="text-3xl font-serif text-[#2d4739] text-center mb-8">Our best-selling products</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="best-sellers-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="max-w-4xl mx-auto px-6 py-32 text-center">
+                <h2 class="text-5xl font-serif text-[#2d4739] mb-10">Crafting Stillness</h2>
+                <div class="space-y-8 text-[#5c4033] text-lg leading-loose">
+                    <p>
+                        Serene Leaf was born from a simple realization: in a world that never stops moving, we need rituals that help us stand still. Inspired by the centuries-old tea cultures of East Asia, we curate premium leaves that prioritize depth, aroma, and soul.
+                    </p>
+                    <p>
+                        Our partnership with ethical growers ensures that every leaf of Jasmine, Oolong, or Pu-erh is handled with the respect it deserves. We don't just sell tea; we provide the tools for your daily moment of mindfulness.
+                    </p>
+                    <div class="py-12">
+                        <div class="h-px w-32 bg-[#2d4739] mx-auto opacity-20"></div>
+                    </div>
+                    <p class="font-serif italic text-2xl text-[#2d4739]">
+                        "Where the water meets the leaf, silence begins."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Products Section -->
+        <section id="products" class="section">
+            <div class="max-w-6xl mx-auto px-6 py-16">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <h2 class="text-5xl font-serif text-[#2d4739] mb-4">The Collection</h2>
+                        <p class="text-[#8da399] text-lg italic">Explore our full range of ethically sourced tea leaves.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10" id="all-products-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Detail Section -->
+        <section id="product-detail" class="section">
+            <div class="max-w-5xl mx-auto px-6 py-32" id="detail-content">
+                <!-- Dynamic Detail View -->
+            </div>
+        </section>
+
+        <!-- Contacts Section -->
+        <section id="contacts" class="section">
+            <div class="max-w-4xl mx-auto px-6 py-32 text-center">
+                <h2 class="text-5xl font-serif text-[#2d4739] mb-6">Let's Talk Tea</h2>
+                <p class="text-[#8da399] text-lg mb-16 max-w-xl mx-auto">We're available across multiple platforms to help you choose your perfect blend.</p>
+                
+                <div class="grid sm:grid-cols-3 gap-8">
+                    <a href="https://wa.me/628123456789" target="_blank" class="flex flex-col items-center p-10 bg-white rounded-3xl border border-[#e5e1da] hover:border-[#2d4739] transition-all group shadow-sm hover:shadow-xl">
+                        <div class="w-16 h-16 bg-[#f9f7f2] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#2d4739] transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#2d4739] group-hover:text-white"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <span class="font-serif text-[#2d4739] text-2xl mb-2">WhatsApp</span>
+                        <span class="text-[#8da399] text-sm">Personal Concierge</span>
+                    </a>
+
+                    <a href="https://www.tokopedia.com/tealabs/" target="_blank" class="flex flex-col items-center p-10 bg-white rounded-3xl border border-[#e5e1da] hover:border-[#2d4739] transition-all group shadow-sm hover:shadow-xl">
+                        <div class="w-16 h-16 bg-[#f9f7f2] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#2d4739] transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#2d4739] group-hover:text-white"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                        </div>
+                        <span class="font-serif text-[#2d4739] text-2xl mb-2">Tokopedia</span>
+                        <span class="text-[#8da399] text-sm">Official Store</span>
+                    </a>
+
+                    <a href="https://shopee.co.id/tealabs" target="_blank" class="flex flex-col items-center p-10 bg-white rounded-3xl border border-[#e5e1da] hover:border-[#2d4739] transition-all group shadow-sm hover:shadow-xl">
+                        <div class="w-16 h-16 bg-[#f9f7f2] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#2d4739] transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#2d4739] group-hover:text-white"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        </div>
+                        <span class="font-serif text-[#2d4739] text-2xl mb-2">Shopee</span>
+                        <span class="text-[#8da399] text-sm">Indonesia Shop</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#2d4739] text-[#f9f7f2] py-16 px-6 mt-20">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        
+                        <img src="Logo putih.png" alt="Logo" class="h-16 w-auto"> 
+                    </div>
+                    <p class="opacity-70 leading-relaxed italic">Bringing the tranquility of the mountain hills to your doorstep, one cup at a time.</p>
+                </div>
+                    <p class="opacity-70 leading-relaxed italic">It's always nice when you have TeaLabs beside you.</p>
+                </div>
+                <div>
+                    <h4 class="font-serif text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-3 opacity-70">
+                        <li><button onclick="showSection('home')" class="hover:text-white transition-colors">Home</button></li>
+                        <li><button onclick="showSection('about')" class="hover:text-white transition-colors">About Us</button></li>
+                        <li><button onclick="showSection('products')" class="hover:text-white transition-colors">Tea Collection</button></li>
+                        <li><button onclick="showSection('contacts')" class="hover:text-white transition-colors">Contacts</button></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/10 text-center opacity-50 text-sm">
+                © 2024 Serene Leaf Tea Co. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const products = [
+            { id: 1, name: "Celestial Jasmine", img: "Foto 1.png", desc: "Our signature jasmine blend, scented over seven nights with fresh blossoms. It offers a light, floral liquor that gently washes away the day's stress.", price: "$18.00" },
+            { id: 2, name: "Midnight Oolong", img: "Foto 2.png", desc: "A semi-oxidized masterpiece from the high peaks. Notes of roasted honey and stone fruit define this medium-bodied experience.", price: "$22.00" },
+            { id: 3, name: "Emerald Sencha", img: "Foto 3.png", desc: "First-flush Japanese green tea, steamed quickly to preserve its vibrant grassy notes and sea-breeze finish. Refreshing and bright.", price: "$20.00" },
+            { id: 4, name: "Ancient Pu-erh", img: "Foto 4.png", desc: "Aged for five years in cedar crates. This fermented tea is deep, earthy, and incredibly smooth with hints of forest floor and dark chocolate.", price: "$35.00" },
+            { id: 5, name: "Golden Assam", img: "Foto 5.png", desc: "Grown in the valley floor, this robust black tea is bold and malty. Ideal for those who enjoy a strong start to their mornings.", price: "$15.00" },
+            { id: 6, name: "Silver Needle White", img: "Foto 6.png", desc: "Consisting only of the first spring buds. Delicate, shimmering, and naturally sweet. A tea for the quietest of moments.", price: "$40.00" },
+            { id: 7, name: "Ruby Rooibos", img: "Foto 7.png", desc: "Naturally caffeine-free. A South African herbal wonder with a rich red hue and nutty sweetness. Perfect for evening relaxation.", price: "$16.00" },
+            { id: 8, name: "Moroccan Mint", img: "Foto 8.png", desc: "High-grade gunpowder green tea blended with organic peppermint. Cooling, digestive, and wonderfully aromatic.", price: "$14.00" },
+            { id: 9, name: "Earl Grey Royale", img: "Foto 9.png", desc: "Premium Keemun black tea infused with double-pressed Bergamot oil from Calabria. Elegant and citrusy.", price: "$19.00" },
+            { id: 10, name: "Chamomile Zen", img: "Foto 10.png", desc: "Whole Egyptian chamomile flowers. A buttery, apple-like flavor that naturally prepares the body for deep, restful sleep.", price: "$15.00" }
+        ];
+
+        function createProductCard(product) {
+            return `
+                <div class="product-card group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-[#e5e1da]">
+                    <div class="aspect-square bg-[#f9f7f2] flex items-center justify-center p-10 overflow-hidden relative">
+                        <img 
+                            src="${product.img}" 
+                            alt="${product.name}" 
+                            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                            onerror="this.src='https://via.placeholder.com/300/f9f7f2/2d4739?text=${product.name.replace(' ', '+')}'"
+                        >
+                        <!-- Hover Overlay -->
+                        <div class="overlay absolute inset-0 flex items-end justify-center pb-8">
+                            <button 
+                                onclick="viewProduct(${product.id})"
+                                class="btn-view bg-[#2d4739] text-white px-8 py-3 rounded-full font-medium shadow-2xl"
+                            >
+                                View product
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-[#2d4739] font-serif text-xl font-bold mb-1">${product.name}</h3>
+                        <p class="text-[#8da399] font-medium tracking-wide">${product.price}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGrids() {
+            const bestGrid = document.getElementById('best-sellers-grid');
+            const allGrid = document.getElementById('all-products-grid');
+
+            bestGrid.innerHTML = products.slice(0, 4).map(p => createProductCard(p)).join('');
+            allGrid.innerHTML = products.map(p => createProductCard(p)).join('');
+        }
+
+        function showSection(id) {
+            // Update Active Link UI
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active', 'text-[#2d4739]', 'font-bold');
+                link.classList.add('text-[#8da399]');
+            });
+            const activeNav = document.getElementById(`nav-${id}`);
+            if (activeNav) {
+                activeNav.classList.add('active', 'text-[#2d4739]', 'font-bold');
+                activeNav.classList.remove('text-[#8da399]');
+            }
+
+            // Update Section visibility
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const activeSection = document.getElementById(id);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function viewProduct(id) {
+            const product = products.find(p => p.id === id);
+            const detailContainer = document.getElementById('detail-content');
+
+            detailContainer.innerHTML = `
+                <button onclick="showSection('products')" class="text-[#8da399] hover:text-[#2d4739] mb-12 flex items-center gap-2 font-medium transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    Back to Collection
+                </button>
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="bg-white rounded-3xl p-12 shadow-inner border border-[#e5e1da]">
+                         <img 
+                            src="${product.img}" 
+                            alt="${product.name}" 
+                            class="w-full h-auto object-contain"
+                            onerror="this.src='https://via.placeholder.com/400/ffffff/2d4739?text=${product.name.replace(' ', '+')}'"
+                          >
+                    </div>
+                    <div>
+                        <span class="text-[#8da399] uppercase tracking-[0.2em] text-xs font-bold">Hand-Picked Selection</span>
+                        <h2 class="text-5xl font-serif text-[#2d4739] mt-4 mb-6 leading-tight">${product.name}</h2>
+                        <p class="text-3xl text-[#2d4739] mb-8 font-serif italic">${product.price}</p>
+                        <p class="text-[#5c4033] text-xl leading-relaxed mb-10 opacity-90">
+                            ${product.desc}
+                        </p>
+                        <div class="flex gap-4">
+                           <button class="flex-1 bg-[#2d4739] text-white py-5 rounded-2xl font-bold hover:bg-[#1a2b22] transition-all transform hover:-translate-y-1 shadow-lg flex items-center justify-center gap-3">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                             Add to Cart
+                           </button>
+                        </div>
+                        <div class="mt-8 pt-8 border-t border-[#e5e1da] flex gap-12">
+                            <div class="text-center">
+                                <p class="text-[10px] uppercase tracking-widest text-[#8da399] mb-1">Caffeine</p>
+                                <p class="text-[#2d4739] font-medium">Medium</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-[10px] uppercase tracking-widest text-[#8da399] mb-1">Steep Time</p>
+                                <p class="text-[#2d4739] font-medium">3-5 mins</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-[10px] uppercase tracking-widest text-[#8da399] mb-1">Temp</p>
+                                <p class="text-[#2d4739] font-medium">85°C</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            showSection('product-detail');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', renderGrids);
+    </script>
+</body>
+</html>
